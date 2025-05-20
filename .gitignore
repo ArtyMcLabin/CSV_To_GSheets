@@ -1,0 +1,11 @@
+# Config file with user-specific paths
+config.ini
+
+# Windows system files
+desktop.ini
+Thumbs.db
+*.lnk
+
+# Temp files
+*.tmp
+~* 
