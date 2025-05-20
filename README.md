@@ -1,4 +1,4 @@
-# GDrive File Sync and Search
+# GDrive File Sync and Search ![Version](https://img.shields.io/badge/version-1.4-blue)
 
 A Windows utility script that helps you quickly move files to your Google Drive folder and search for them online.
 
