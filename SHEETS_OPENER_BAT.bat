@@ -1,25 +1,29 @@
-REM v1.2 - GDrive File Sync and Search Script
+@echo off
+setlocal enabledelayedexpansion
+
+REM v1.3 - GDrive File Sync and Search Script
 REM ===========================================
 REM REQUIREMENTS:
 REM 1. Windows OS
 REM 2. Google Drive for desktop installed and configured
-REM 3. Place this script in your Google Drive sync folder
-REM 
-REM USAGE:
-REM 1. First run will ask for GDrive sync folder path
-REM 2. Set this script as "Open with" for file types you want to sync
-REM 3. When you open a file with this script, it will:
-REM    - Move the file to your configured GDrive folder
-REM    - Wait for GDrive to sync the file
-REM    - Open a browser search for the file in your GDrive
 REM ===========================================
-
-@echo off
-setlocal enabledelayedexpansion
 
 REM Get script directory
 set "SCRIPT_DIR=%~dp0"
 set "CONFIG_FILE=%SCRIPT_DIR%config.ini"
+
+REM Check if a file was provided
+if "%~1"=="" (
+    echo Error: No file provided
+    echo.
+    echo Usage:
+    echo 1. Drag and drop a file onto this script
+    echo 2. Or create a desktop shortcut and drag files there
+    echo 3. Or set this script as "Open with" for your files
+    echo.
+    pause
+    exit /b 1
+)
 
 :CHECK_CONFIG
 REM Read GDRIVE_SYNC_PATH from config
@@ -44,13 +48,6 @@ if not exist "!GDRIVE_PATH!" (
     echo # Your Google Drive sync folder path ^(use full path, e.g. C:\Users\YourName\Google Drive^)>> "!CONFIG_FILE!"
     echo GDRIVE_SYNC_PATH=!GDRIVE_PATH!>> "!CONFIG_FILE!"
     echo Configuration saved to !CONFIG_FILE!
-)
-
-REM Check if a file was provided
-if "%~1"=="" (
-    echo Error: No file provided
-    echo Usage: %~nx0 [file]
-    exit /b 1
 )
 
 set "filePath=%~f1"
