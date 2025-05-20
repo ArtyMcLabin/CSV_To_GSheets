@@ -32,6 +32,12 @@ A Windows utility script that helps you quickly move files to your Google Drive 
 3. Browse to and select `SHEETS_OPENER_BAT.bat`
 4. (Optional) Check "Always use this app"
 
+### Method 3: Desktop Shortcut (Recommended)
+1. Right-click on `SHEETS_OPENER_BAT.bat`
+2. Select "Create shortcut"
+3. Move the shortcut to your desktop
+4. Now you can drag and drop files onto the shortcut from anywhere!
+
 The file will be moved to your configured Google Drive folder and a browser window will open searching for the file in your Google Drive.
 
 ## Version History
