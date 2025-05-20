@@ -1,8 +1,9 @@
-REM v1.1 - GDrive File Sync and Search Script
+REM v1.2 - GDrive File Sync and Search Script
 REM ===========================================
 REM REQUIREMENTS:
 REM 1. Windows OS
 REM 2. Google Drive for desktop installed and configured
+REM 3. Place this script in your Google Drive sync folder
 REM 
 REM USAGE:
 REM 1. First run will ask for GDrive sync folder path
@@ -20,30 +21,29 @@ REM Get script directory
 set "SCRIPT_DIR=%~dp0"
 set "CONFIG_FILE=%SCRIPT_DIR%config.ini"
 
-REM Check if config exists and load it
-if not exist "%CONFIG_FILE%" (
-    echo First time setup - Creating config file...
-    echo # GDrive Sync Script Configuration> "%CONFIG_FILE%"
-    echo # Your Google Drive sync folder path ^(use full path, e.g. C:\Users\YourName\Google Drive^)>> "%CONFIG_FILE%"
-    echo GDRIVE_SYNC_PATH=>> "%CONFIG_FILE%"
-    
-    echo Please enter your Google Drive sync folder path:
-    set /p GDRIVE_PATH="> "
-    
-    REM Update config with the path
-    echo GDRIVE_SYNC_PATH=%GDRIVE_PATH%> "%CONFIG_FILE%"
-    echo Configuration saved to %CONFIG_FILE%
-)
-
+:CHECK_CONFIG
 REM Read GDRIVE_SYNC_PATH from config
 for /f "tokens=2 delims==" %%a in ('type "%CONFIG_FILE%" ^| findstr "GDRIVE_SYNC_PATH"') do set "GDRIVE_PATH=%%a"
 
 REM Validate GDRIVE_PATH
-if not exist "%GDRIVE_PATH%" (
-    echo Error: GDrive sync folder not found at: %GDRIVE_PATH%
-    echo Please update the path in %CONFIG_FILE%
-    pause
-    exit /b 1
+if not exist "!GDRIVE_PATH!" (
+    echo GDrive sync folder not found or not configured.
+    echo Please enter your Google Drive sync folder path
+    echo Example: C:\Users\YourName\Google Drive
+    set /p GDRIVE_PATH="> "
+    
+    REM Validate the entered path
+    if not exist "!GDRIVE_PATH!" (
+        echo Error: The path you entered does not exist.
+        echo Please verify the path and try again.
+        goto CHECK_CONFIG
+    )
+    
+    REM Update config with the new path
+    echo # GDrive Sync Script Configuration> "!CONFIG_FILE!"
+    echo # Your Google Drive sync folder path ^(use full path, e.g. C:\Users\YourName\Google Drive^)>> "!CONFIG_FILE!"
+    echo GDRIVE_SYNC_PATH=!GDRIVE_PATH!>> "!CONFIG_FILE!"
+    echo Configuration saved to !CONFIG_FILE!
 )
 
 REM Check if a file was provided
