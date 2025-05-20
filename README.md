@@ -9,6 +9,7 @@ A Windows utility script that helps you quickly move files to your Google Drive 
 - Opens Google Drive web search for the moved file
 - Can be set as "Open with" program for quick access
 - Configuration stored in `config.ini`
+- Multiple ways to use: drag-and-drop, shortcut, "Open with", or command line
 
 ## Requirements
 
@@ -26,22 +27,30 @@ A Windows utility script that helps you quickly move files to your Google Drive 
 ### Method 1: Drag and Drop
 - Drag any file onto `SHEETS_OPENER_BAT.bat`
 
-### Method 2: Open With
-1. Right-click a file
-2. Choose "Open with" → "Choose another app"
-3. Browse to and select `SHEETS_OPENER_BAT.bat`
-4. (Optional) Check "Always use this app"
-
-### Method 3: Desktop Shortcut (Recommended)
+### Method 2: Desktop Shortcut (Recommended)
 1. Right-click on `SHEETS_OPENER_BAT.bat`
 2. Select "Create shortcut"
 3. Move the shortcut to your desktop
 4. Now you can drag and drop files onto the shortcut from anywhere!
 
+### Method 3: Open With
+1. Right-click a file
+2. Choose "Open with" → "Choose another app"
+3. Browse to and select `SHEETS_OPENER_BAT.bat`
+4. (Optional) Check "Always use this app"
+
+### Method 4: Command Line
+```batch
+SHEETS_OPENER_BAT.bat "path\to\your\file.csv"
+```
+
 The file will be moved to your configured Google Drive folder and a browser window will open searching for the file in your Google Drive.
 
 ## Version History
 
+- v1.4: Added CLI usage documentation
+- v1.3: Improved error messages and output formatting
+- v1.2: Added config file support, removed dependency on script location
 - v1.1: Added config file support, removed dependency on script location
 - v1.0: Initial release
 

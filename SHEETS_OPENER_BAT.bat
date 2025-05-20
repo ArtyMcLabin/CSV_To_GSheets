@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM v1.3 - GDrive File Sync and Search Script
+REM v1.4 - GDrive File Sync and Search Script
 REM ===========================================
 REM REQUIREMENTS:
 REM 1. Windows OS
@@ -18,8 +18,9 @@ if "%~1"=="" (
     echo.
     echo Usage:
     echo 1. Drag and drop a file onto this script
-    echo 2. Or create a desktop shortcut and drag files there
-    echo 3. Or set this script as "Open with" for your files
+    echo 2. Create a desktop shortcut and drag files there
+    echo 3. Set this script as "Open with" for your files
+    echo 4. Run from command line: %~nx0 "path\to\your\file.csv"
     echo.
     pause
     exit /b 1
