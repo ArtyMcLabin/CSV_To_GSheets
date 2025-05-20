@@ -1,4 +1,4 @@
-# GDrive File Sync and Search ![Version](https://img.shields.io/badge/version-1.4-blue)
+# GDrive File Sync and Search ![Version](https://img.shields.io/badge/Version-v1.5-blue)
 
 A Windows utility script that helps you quickly move files to your Google Drive folder and search for them online.
 
@@ -48,10 +48,11 @@ The file will be moved to your configured Google Drive folder and a browser wind
 
 ## Version History
 
+- v1.5: Standardized project structure according to GitWorkflow
 - v1.4: Added CLI usage documentation
 - v1.3: Improved error messages and output formatting
 - v1.2: Added config file support, removed dependency on script location
-- v1.1: Added config file support, removed dependency on script location
+- v1.1: Added desktop shortcut usage tip
 - v1.0: Initial release
 
 ## License
